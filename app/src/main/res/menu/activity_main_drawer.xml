@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_cargar"
+        android:title="Cargar Producto"
+        android:icon="@android:drawable/ic_input_add" />
+
+    <item
+        android:id="@+id/nav_modificar"
+        android:title="Modificar producto"
+        android:icon="@android:drawable/ic_menu_edit" />
+
+    <item
+        android:id="@+id/nav_listar"
+        android:title="Lista de Productos"
+        android:icon="@android:drawable/ic_menu_agenda" />
+
+    <item
+        android:id="@+id/nav_salir"
+        android:title="Salir"
+        android:icon="@android:drawable/ic_menu_close_clear_cancel" />
+
+</menu>

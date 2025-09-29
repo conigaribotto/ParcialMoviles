@@ -1,0 +1,42 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_listar">
+
+    <!-- Fragment Cargar -->
+    <fragment
+        android:id="@+id/nav_cargar"
+        android:name="com.example.parcialmoviles.ui.cargar.CargarFragment"
+        android:label="Cargar Producto"
+        tools:layout="@layout/fragment_cargar" />
+
+    <!-- Fragment Listar -->
+    <fragment
+        android:id="@+id/nav_listar"
+        android:name="com.example.parcialmoviles.ui.listar.ListarFragment"
+        android:label="Lista de Productos"
+        tools:layout="@layout/fragment_listar" />
+
+    <!-- Fragment Salir -->
+    <fragment
+        android:id="@+id/nav_salir"
+        android:name="com.example.parcialmoviles.ui.salir.SalirFragment"
+        android:label="Salir"
+        tools:layout="@layout/fragment_salir" />
+
+    <!-- Fragment Modificar -->
+    <fragment
+        android:id="@+id/nav_modificar"
+        android:name="com.example.parcialmoviles.ui.modificar.ModificarFragment"
+        android:label="Modificar Producto"
+        tools:layout="@layout/fragment_modificar" />
+
+    <!-- Fragment Detalle Producto -->
+    <fragment
+        android:id="@+id/nav_detalle_producto"
+        android:name="com.example.parcialmoviles.ui.modificar.DetalleProductoFragment"
+        android:label="Detalle Producto"
+        tools:layout="@layout/fragment_detalle_producto" />
+
+</navigation>
