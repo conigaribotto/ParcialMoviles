@@ -11,9 +11,8 @@ import java.util.List;
 
 public class ProductosViewModel extends ViewModel {
 
-    // LiveData para la lista de productos
     private final MutableLiveData<List<Producto>> productosLive = new MutableLiveData<>(new ArrayList<>());
-    // LiveData para mensajes de validación o éxito
+
     private final MutableLiveData<String> mensajeLive = new MutableLiveData<>();
 
     // Obtener productos (solo lectura desde la UI)
@@ -81,7 +80,7 @@ public class ProductosViewModel extends ViewModel {
 
     // Modificar un producto existente
     public void modificarProducto(String codigoOriginal, String codigoNuevo, String descripcion, String precioStr) {
-        // Validar campos
+
         if (codigoNuevo == null || codigoNuevo.trim().isEmpty() ||
                 descripcion == null || descripcion.trim().isEmpty() ||
                 precioStr == null || precioStr.trim().isEmpty()) {
@@ -129,10 +128,9 @@ public class ProductosViewModel extends ViewModel {
         productoEncontrado.setDescripcion(descripcion.trim());
         productoEncontrado.setPrecio(precio);
 
-        // Ordenar alfabéticamente por descripción
+
         Collections.sort(lista, Comparator.comparing(Producto::getDescripcion, String.CASE_INSENSITIVE_ORDER));
 
-        // Notificar cambios a la UI
         productosLive.setValue(lista);
         mensajeLive.setValue("OK");
     }

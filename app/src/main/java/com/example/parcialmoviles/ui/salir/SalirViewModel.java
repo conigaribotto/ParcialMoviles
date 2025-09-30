@@ -11,13 +11,9 @@ public class SalirViewModel extends ViewModel {
     public LiveData<Boolean> getSalir() {
         return salir;
     }
-
-    // Método para confirmar salir
     public void confirmarSalir() {
         salir.setValue(true);
     }
-
-    // Método para cancelar salir
     public void cancelarSalir() {
         salir.setValue(false);
     }

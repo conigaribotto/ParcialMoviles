@@ -19,17 +19,17 @@ public class SalirFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        // Inicializar ViewModel
+
         viewModel = new ViewModelProvider(this).get(SalirViewModel.class);
 
-        // Observar LiveData para salir
+
         viewModel.getSalir().observe(getViewLifecycleOwner(), salir -> {
             if (salir != null && salir) {
                 requireActivity().finish(); // cerrar app
             }
         });
 
-        // Mostrar diálogo de confirmación
+
         new AlertDialog.Builder(requireContext())
                 .setTitle("Salir")
                 .setMessage("¿Desea cerrar la aplicación?")
@@ -37,7 +37,7 @@ public class SalirFragment extends Fragment {
                 .setNegativeButton("No", (dialog, which) -> viewModel.cancelarSalir())
                 .show();
 
-        // Retornar una vista vacía, solo es contenedor del dialogo
+
         return new View(requireContext());
     }
 }

@@ -31,16 +31,13 @@ public class ModificarFragment extends Fragment {
         etCodigo = root.findViewById(R.id.etCodigo);
         btnBuscar = root.findViewById(R.id.btnBuscar);
 
-        // Obtener ViewModel compartido de productos
         ProductosViewModel sharedViewModel = new ViewModelProvider(requireActivity())
                 .get(ProductosViewModel.class);
 
-        // Crear ViewModel de Modificar con referencia al compartido
         viewModel = new ModificarViewModel(sharedViewModel);
 
         btnBuscar.setOnClickListener(v -> viewModel.buscarProducto(etCodigo.getText().toString()));
 
-        // Observador de producto encontrado
         viewModel.getProductoSeleccionado().observe(getViewLifecycleOwner(), producto -> {
             if (producto != null) {
                 Bundle bundle = new Bundle();
@@ -50,7 +47,6 @@ public class ModificarFragment extends Fragment {
             }
         });
 
-        // Observador de mensajes
         viewModel.getMensaje().observe(getViewLifecycleOwner(), mensaje -> {
             if (mensaje != null && !mensaje.isEmpty()) {
                 Toast.makeText(getContext(), mensaje, Toast.LENGTH_SHORT).show();
