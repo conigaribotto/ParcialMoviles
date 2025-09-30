@@ -15,19 +15,18 @@ public class ProductosViewModel extends ViewModel {
 
     private final MutableLiveData<String> mensajeLive = new MutableLiveData<>();
 
-    // Obtener productos (solo lectura desde la UI)
     public LiveData<List<Producto>> getProductos() {
         return productosLive;
     }
 
-    // Obtener mensajes
+
     public LiveData<String> getMensaje() {
         return mensajeLive;
     }
 
-    // Agregar un nuevo producto
+
     public void agregarProducto(String codigo, String descripcion, String precioStr) {
-        // Validaciones de campos vacíos
+
         if (codigo == null || codigo.trim().isEmpty() ||
                 descripcion == null || descripcion.trim().isEmpty() ||
                 precioStr == null || precioStr.trim().isEmpty()) {
@@ -43,7 +42,7 @@ public class ProductosViewModel extends ViewModel {
             return;
         }
 
-        // Validar código duplicado
+
         List<Producto> currentList = productosLive.getValue();
         for (Producto p : currentList) {
             if (p.getCodigo().equalsIgnoreCase(codigo.trim())) {
@@ -52,18 +51,18 @@ public class ProductosViewModel extends ViewModel {
             }
         }
 
-        // Agregar producto a la lista
+
         List<Producto> nuevaLista = new ArrayList<>(currentList);
         nuevaLista.add(new Producto(codigo.trim(), descripcion.trim(), precio));
 
-        // Ordenar alfabéticamente por descripción
+
         Collections.sort(nuevaLista, Comparator.comparing(Producto::getDescripcion, String.CASE_INSENSITIVE_ORDER));
 
         productosLive.setValue(nuevaLista);
         mensajeLive.setValue("OK");
     }
 
-    // Buscar producto por código
+
     public Producto buscarProductoPorCodigo(String codigo) {
         if (codigo == null || codigo.trim().isEmpty()) return null;
 
@@ -78,7 +77,6 @@ public class ProductosViewModel extends ViewModel {
         return null;
     }
 
-    // Modificar un producto existente
     public void modificarProducto(String codigoOriginal, String codigoNuevo, String descripcion, String precioStr) {
 
         if (codigoNuevo == null || codigoNuevo.trim().isEmpty() ||
@@ -96,11 +94,11 @@ public class ProductosViewModel extends ViewModel {
             return;
         }
 
-        // Copiar la lista actual para modificarla
+
         List<Producto> lista = new ArrayList<>(productosLive.getValue());
         Producto productoEncontrado = null;
 
-        // Buscar producto original por código
+
         for (Producto p : lista) {
             if (p.getCodigo().equalsIgnoreCase(codigoOriginal)) {
                 productoEncontrado = p;
@@ -113,7 +111,7 @@ public class ProductosViewModel extends ViewModel {
             return;
         }
 
-        // Validar código duplicado si se cambió
+
         if (!codigoOriginal.equalsIgnoreCase(codigoNuevo)) {
             for (Producto p : lista) {
                 if (p.getCodigo().equalsIgnoreCase(codigoNuevo.trim())) {
@@ -123,7 +121,7 @@ public class ProductosViewModel extends ViewModel {
             }
         }
 
-        // Actualizar los datos del producto
+
         productoEncontrado.setCodigo(codigoNuevo.trim());
         productoEncontrado.setDescripcion(descripcion.trim());
         productoEncontrado.setPrecio(precio);

@@ -19,13 +19,12 @@ public class CargarViewModel extends AndroidViewModel {
     private final MutableLiveData<String> precio = new MutableLiveData<>("");
     private final MutableLiveData<String> mensaje = new MutableLiveData<>();
 
-    // LiveData getters
+
     public LiveData<String> getCodigo() { return codigo; }
     public LiveData<String> getDescripcion() { return descripcion; }
     public LiveData<String> getPrecio() { return precio; }
     public LiveData<String> getMensaje() { return mensaje; }
 
-    // Setters
     public void setCodigo(String c) { codigo.setValue(c); }
     public void setDescripcion(String d) { descripcion.setValue(d); }
     public void setPrecio(String p) { precio.setValue(p); }
@@ -43,7 +42,7 @@ public class CargarViewModel extends AndroidViewModel {
             mensaje.setValue("Precio inválido");
             return false;
         }
-        mensaje.setValue(""); // limpiar mensaje si todo OK
+        mensaje.setValue("");
         return true;
     }
 }

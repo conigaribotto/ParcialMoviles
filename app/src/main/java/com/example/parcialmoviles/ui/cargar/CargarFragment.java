@@ -32,17 +32,15 @@ public class CargarFragment extends Fragment {
         etPrecio = root.findViewById(R.id.etPrecio);
         btnAgregar = root.findViewById(R.id.btnAgregar);
 
-        // Obtenemos el ViewModel compartido
+
         viewModel = new ViewModelProvider(requireActivity()).get(ProductosViewModel.class);
 
-        // Botón para agregar producto: solo envía los valores al ViewModel
         btnAgregar.setOnClickListener(v -> viewModel.agregarProducto(
                 etCodigo.getText().toString(),
                 etDescripcion.getText().toString(),
                 etPrecio.getText().toString()
         ));
 
-        // Observamos los mensajes del ViewModel
         viewModel.getMensaje().observe(getViewLifecycleOwner(), mensaje -> {
             if (mensaje == null || mensaje.isEmpty()) return;
 
